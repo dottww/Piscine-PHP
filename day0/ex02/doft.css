@@ -1,11 +1,83 @@
-#TOP {
-	display: inline-block;
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.header {
+	border: 1px solid red;
+	padding: 15px;
+}
+
+.BANNER {
 	background-color: rgb(144, 144, 144);
 	width: 80%;
-	/* height: 500px; */
-	
-	/* margin-right: 20px; */
 	box-shadow: 10px 10px 10px #000000;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	/* display: inline-block; */
+	position: relative;
+	height: 500px;
+	/* margin-right: 20px; */
+}
+
+.upright {
+	float: right;
+	border: 3px solid #73AD21;
+}
+
+img.logoclass {
+	display: inline-block;
+	width: 35%;
+}
+
+#logo {
+	display: inline-block;
+	width: 35%;
+}
+
+#reload {
+	float: right;
+	width: 30%;
+	display: block;
+}
+
+#close {
+	width: 30%;
+	display: block;
+	float: right;
+	width: 17px;
+	bottom:0px;
+	margin-right: 10px;
+}
+
+
+
+.downright {
+	/* position: relative; */
+	float: right;
+	/* margin-top: 5%; */
+	/* vertical-align: bottom; */
+	/* float: right; */
+	/* max-height: 25px; */
+	/* left: 100px; */
+	border: 3px solid #73AD21;
+}
+
+.down {
+	vertical-align: bottom;
+	margin-bottom: 0;
+	/* width: 30%; */
+}
+
+.SIDEBAR {
+	width: 25%;
+	float: left;
+	padding: 15px;
+	border: 1px solid red;
 }
 
 #DIV_A {
@@ -17,6 +89,13 @@
 	box-shadow: 3px 3px 9px yellow;
 }
 
+.main {
+	width: 42%;
+	float: left;
+	padding: 15px;
+	border: 1px solid red;
+}
+
 #DIV_B {
 	display: inline-block;
 	background-color: #eee;
@@ -24,6 +103,14 @@
 	height: 50px;
 	margin-right: 20px;
 	box-shadow: 0px 0px 9px green;
+}
+
+.AD {
+	width: 25%;
+	float: right;
+	margin-right: 1%;
+	padding: 15px;
+	border: 1px solid red;
 }
 
 #DIV_C {
@@ -34,6 +121,7 @@
 	margin-right: 20px;
 	box-shadow: -3px -3px 9px pink;
 }
+
 /* 
 img {
 	width:auto;
@@ -42,5 +130,28 @@ img {
 	height: auto; 
 	max-width: 100%;
 	max-height: 100%;
-} */ 
+} */
 
+div.relative {
+	position: relative;
+	left: 30px;
+	border: 3px solid #73AD21;
+}
+
+.shadow {
+	-moz-box-shadow: 10px 10px 9px #000000;
+	-webkit-box-shadow: 10px 10px 9px #000000;
+	box-shadow: 10px 10px 9px #000000;
+}
+
+.normal {
+	float: left;
+	position: relative;
+	/* text-align:middle; */
+	/* vertical-align:middle; */
+	/* margin-top: auto;
+
+	margin-left: auto;
+	margin-right: auto; */
+	width: 30%;
+}
