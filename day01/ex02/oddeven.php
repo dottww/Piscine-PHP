@@ -6,12 +6,10 @@ while (1) {
 
 	$num = fgets(STDIN);
 	$num = rtrim($num, "\n\r");
-	if (feof(STDIN))
-	{
+	if (feof(STDIN)) {
 		echo "\n";
 		exit();
-	}
-	if (!is_numeric($num)) {
+	} else if (!is_numeric($num)) {
 		echo "'$num' is not a number";
 	} else if ($num % 2 == 0) {
 		echo "The number $num is even";
