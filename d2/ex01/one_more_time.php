@@ -60,8 +60,6 @@ function is_hour($str)
 		return 1;
 }
 
-
-
 if ($argc != 2) {
 	return;
 } else {
@@ -91,7 +89,7 @@ if ($argc != 2) {
 	$format = 'd-n-Y G:i:s';
 	$dny = implode("-", $newarray);
 	$dnyhr = $dny . ' ' . $rawarray[4];
-	echo "dny=$dnyhr\n";
+	// echo "dny=$dnyhr\n";
 	$sec = strtotime(date($dnyhr),'01-01-1970 00:00:00');
 	if (!$sec)
 		wf();
