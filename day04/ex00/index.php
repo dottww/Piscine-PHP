@@ -1,24 +1,27 @@
 <?php
 session_start();
-$login= $_GET['login'];
-$passwd= $_GET['passwd'];
-$submit= $_GET['submit'];
+$login = $_GET['login'];
+$passwd = $_GET['passwd'];
+$submit = $_GET['submit'];
 
-if ($login && $passwd && $submit=="OK")
-{
+if ($login && $passwd && $submit == "OK") {
 
+ $_SESSION['login'] = $login;
+ $_SESSION['passwd'] = $passwd;
+ $_SESSION['time'] = time();
 }
-$valid = ($_SERVER['PHP_AUTH_USER'] == 'zaz' && $_SERVER['PHP_AUTH_PW'] == 'jaimelespetitsponeys');
-
-if (!$valid) {
-  header('WWW-Authenticate: Basic realm="Testing"');
-  header('HTTP/1.0 401 Unauthorized');
-  die ("Not authorized");
-}
-
-else{
-	$imgfile=file_get_contents("../img/42.png");
-	echo "<html><body>\nHello Zaz<br />\n<img src='data:image/png;base64,".base64_encode($imgfile)."'>\n</body></html>";
-}
-
 ?>
+<!DOCTYPE html>
+<html><body>
+
+<form action="/index.php" method="GET">
+login:<br>
+  <input type="text" name="login" value="">
+  <br>
+  passwd:<br>
+  <input type="password" name="passwd" value="">
+  <br><br>
+  <input type="submit" value="OK">
+</form>
+</body>
+</html>
