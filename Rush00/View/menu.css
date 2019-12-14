@@ -47,3 +47,12 @@ ul.menu{
     padding:0px;
     float:left;
 }
+.MAIN img {
+	-webkit-transform: scale(1);
+}
+
+.MAIN img:hover {
+	-webkit-transition: 0.5s;
+	-webkit-transform: scale(1.28);
+	overflow: hidden;
+}
