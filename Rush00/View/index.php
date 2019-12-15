@@ -1,114 +1,84 @@
+<?php
+session_start();
+include "whoami.php";
+?>
 <!DOCTYPE html>
-<HTML>
+<html>
 
-<HEAD>
-	<META charset="UTF-8">
-	<TITLE>Basics</TITLE>
-	<link rel="stylesheet" type="text/css" href="menu.css">
-	<STYLE>
-		body {
-			background-color: pink;
-		}
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Shop42</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<style>
+	</style>
+</head>
 
-		H1 {
-			color: white;
-			text-align: center
-		}
-
-		.center {
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			width: 80%;
-		}
-	</STYLE>
-</HEAD>
-
-<BODY>
-	<H1>Minishop</H1><BR />
-
-	<div style="width:50%; display:inline-block;">
-		<div>
-			<p style="text-align:center;"><a href="https://www.uniqlo.com/">uniqlo.com</a></p>
-			<IMG src="https://www.uniqlo.com/on/demandware.static/Sites-FR-Site/-/default/dw105f1348/images/logo.svg" class="center">
-
+<body>
+	<div class="whole">
+		<div class="BANNER">
+			<H1>Shop of 42 : <?php echo $_GET['view'] . '.php' ?></H1><BR />
+			<div class="upright">
+				<IMG src="../resources/42.png" id="loupe" alt="Search" title="Search">
+			</div>
+		</div>
+		<div class="SIDEBAR">
 			<form action="index.php" method="GET">
-				$PRODUCT_NAME: <p>Uniqlo gift card</p>
-				<br />
-				Price: $VAR_PRICE
-				<br />
-				Amount: <input type="number" name="amount" value="1" />
-				<br />
-				<input type="submit" name="add_to_cart" value="add_to_cart" />
+				<input type="hidden" name="view" value="shop">
+				<input type="image" src="../resources/shopping.png" alt="Shopping" title="Shopping" width="68">
+			</form>
+			<br />
+			<form action="index.php" method="GET">
+				<input type="hidden" name="view" value="cart">
+				<input type="image" src="../resources/cart.jpg" alt="cart" title="cart" width="68">
+			</form>
+			<br />
+			<form action="index.php" method="GET">
+				<input type="hidden" name="view" value="user">
+				<input type="image" src="../resources/user.png" alt="user" title="user" width="68">
+			</form>
+			<br />
+			<form action="index.php" method="GET">
+				<input type="hidden" name="view" value="modif">
+				<input type="image" src="../resources/outil.png" alt="modif" title="modif" width="68">
 			</form>
 
-			<p style="text-align:center;"><a href="https://www.galerieslafayette.com/">galerieslafayette.com</a></p>
-			<IMG src="https://www.galerieslafayette.com/img/common/logo-galeries-lafayette.svg" class="center">
-			<p style="text-align:center;">Galeries Lafayette gift card</p>
+			<!-- <IMG src="../resources/outil.png" alt="Use" title="Use"> -->
+			<!-- <a href="./user.php"><IMG src="../resources/user.png" alt="User" title="User"></a> -->
+			<!-- <a href="./shop.php"><IMG src="../resources/shopping.png" alt="Shopping" title="Shopping"></a> -->
+			<!-- <IMG class="selected" src="../resources/oeil.png" alt="Look" title="Look"> -->
+			<!-- <a href="./cart.php"><IMG src="../resources/cart.png" alt="Cart" title="Cart"></a> -->
+			<!-- <IMG src="../resources/chat-icon.png" alt="Speak" title="Speak"> -->
+			<div class="WINDOW">
+				<form action="logout.php" method="POST" class="upright">
+					<input type="hidden" name="usr" value="logout">
+					<input type="image" src="../resources/close.gif" id="close" alt="Logout" title="Disconnect" width="18">
+				</form>
+				<form action="index.php" method="POST" class="upright">
+					<input type="hidden" name="usr" value="reload">
+					<input type="image" src="../resources/reload.png" alt="reload" title="reload" width="18">
+				</form>
+				<!-- <iframe src="<?php echo $_GET['usr'] . '.php' ?>" width=100% height=100% frameborder=" 1/0" name="shop_frame" scrolling="yes/no/auto"> -->
+				<iframe src="w_user.php" width=100% height=70% frameborder=" 1/0" name="shop_frame" scrolling="yes/no/auto">
+				</iframe>
+				<!-- <IMG class= "upright" src="../resources/user.png" alt="user" title="user"> -->
+
+
+			</div>
 		</div>
-		<div>
-			<ul class="menu">
-				<li><a href="#">Fruits</a></li>
-				<li><a href="#">apple</a></li>
-				<li><a href="#">orange</a></li>
-				<li><a href="#">banana</a></li>
-			</ul>
-			<ul class="menu">
-				<li><a href="#">Mobiles</a></li>
-				<li><a href="#">iPhone X</a></li>
-				<li><a href="#">Google Pixel</a></li>
-			</ul>
-			<ul class="menu">
-				<li><a href="#">Gift cards</a></li>
-				<li><a href="#">Uniqlo</a></li>
-				<li><a href="#">Galeries Lafayette</a></li>
-			</ul>
+		<div class="MAIN">
+			<iframe src="<?php if ($_GET['view'] == "") echo "welcome.php";
+							else echo $_GET['view'] . '.php' ?>" width=100% height=100% frameborder=" 1/0" name="shop_frame" scrolling="yes/no/auto">
+			</iframe>
 		</div>
+		<div class="SIDEBAR2">
+			<img src="../resources/book.png" alt="book" title="Livre de sort">
+			<img src="../resources/towel.png" alt="towel" title="towel">
+			<div class="wall" title="Wall"></div>
+		</div>
+
 	</div>
-	<div style="width:20%; display:inline-block;">
-		<div class="basket">
-			<IMG src="../view/cart.jpg" class="center">
-			<p style="text-align:center;">BASKET</a></p>
-		</div>
-		<?php
-		session_start();
+</body>
 
-		if (
-			isset($_POST["submit"]) &&
-			isset($_POST["login"]) &&
-			isset($_POST["passwd"]) && $_POST["submit"] == "OK"
-		) {
-
-			$_SESSION["login"] = $_POST["login"];
-			$_SESSION["passwd"] = $_POST["passwd"];
-		}
-		?>
-		<div class="log_in">
-			<form action="index.php" method="POST">
-				Username: <input type="text" name="login" value="<?php if (isset($_SESSION["login"])) {
-																		echo $_SESSION["login"];
-																	} ?>" />
-				<br />
-				Password: <input type="password" name="passwd" value="<?php if (isset($_SESSION["passwd"])) {
-																			echo $_SESSION["passwd"];
-																		} ?>" />
-				<br />
-				<input type="submit" name="submit" value="OK" />
-			</form>
-		</div>
-		<div class="create_account">
-			<form action="create.php" method="POST">
-				Username: <input type="text" name="login" value="" />
-				<br />
-				Password: <input type="password" name="passwd" value="" />
-				<br />
-				<input type="submit" name="submit" value="OK" />
-			</form>
-		</div>
-	</div>
-	<hr>
-	<p style="font-style:italic; text-align:right; font-family:monospace;">©weilin 2019</p>
-
-</BODY>
-
-</HTML>
+</html>
