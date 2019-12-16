@@ -1,0 +1,10 @@
+name,price,img,ID,categorie
+"Uniqlo Gift Card",50,uniqlo.png,1,Gift_Cards
+"Galeries Lafayette Gift Card",50,Lafayette.png,2,Gift_Cards
+Apple,2,apple.png,3,Fruits
+Orange,2,Orange.png,4,Fruits
+Banana,1,Banana.png,5,Fruits
+Google Pixel 4,749,Google_Pixel_4.png,6,Google
+iPhone 11 Pro,1159,iPhone_11_Pro.png,7,Apple
+iPhone11,859,iPhone_11.png,8,Apple
+Potato,1,potato.png,9,Vegetable

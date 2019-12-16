@@ -1,0 +1,88 @@
+body {
+    /* background-color: pink; */
+}
+
+H1 {
+    color: white;
+    text-align: center
+}
+
+.products-container {
+    justify-content: space-between;
+    width: 80vw;
+    margin: 1vw auto;
+    text-align: center;
+}
+
+table {
+    width: 78%;
+    margin: auto;
+    height: auto;
+    margin-top: 5%;
+}
+
+td {
+    width: 5%;
+    height: auto;
+    padding: 3px;
+    /* position: relative; */
+    /* border: 1px solid black; */
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+/* unvisited link */
+
+a:link {
+    color: blue;
+}
+
+/* visited link */
+
+a:visited {
+    color: purple;
+}
+
+/* mouse over link */
+
+a:hover {
+    color: red;
+}
+
+/* selected link */
+
+a:active {
+    color: greenyellow;
+}
+
+ul.menu li {
+    display: none;
+    padding: 10px 10px 10px 20px;
+    border-top: 1px solid #ff7300;
+}
+
+ul.menu li:first-child {
+    display: block;
+    border-top: 0px;
+    padding-left: 10px;
+}
+
+ul.menu:hover li {
+    display: block;
+}
+
+ul.menu:hover li:first-child {
+    background-color: #ff9100d5;
+}
+
+ul.menu {
+    background-color: #ffa600d5;
+    width: 150px;
+    padding: 0px;
+    float: left;
+}
