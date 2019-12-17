@@ -1,1 +1,1 @@
-CREATE DATABASE db_weilin
+CREATE DATABASE IF NOT EXISTS `db_weilin`;
