@@ -1,70 +1,101 @@
 <?php
+require_once("Color.class.php");
 
 class Vertex
 {
-	public $x;
-	public $y;
-	public $z;
-	public $w = 1;
-	public $color = array('red' => 255,'green' => 255,'blue' => 255);
-	static $verbose = FALSE;
+	private $_x;
+	private $_y;
+	private $_z;
+	private $_w = 1.0;
+	private $_color;
+	public static $verbose = FALSE;
 
 	public function __construct($vtx)
 	{
-		if (array_key_exists('x', $vtx) &&array_key_exists('y', $vtx) &&array_key_exists('z', $vtx))
-		{
-			$this->x = intval($vtx['x']);
-			$this->y = intval($vtx['y']);
-			$this->z = intval($vtx['z']);
-			if(array_key_exists('w', $vtx))
-				$this->w = intval($vtx['w']);
-			if(array_key_exists('color', $vtx))
-				$this->color = new Color($vtx['color']);
+		if (isset($vtx['x']) && isset($vtx['y']) && isset($vtx['z'])) {
+			$this->_x = $vtx['x'];
+			$this->_y = $vtx['y'];
+			$this->_z = $vtx['z'];
+			if (isset($vtx['w']))
+				$this->_w = intval($vtx['w']);
+			if (isset($vtx['color']))
+				$this->_color = $vtx['color'];
+			else
+				$this->_color = new Color(array('red' => 255, 'green' => 255, 'blue' => 255));
 		}
 		if (Self::$verbose == TRUE)
-			echo $this->__toString() . " constructed.\n";
+			echo $this->__toString() . " constructed\n";
 	}
 	public function __destruct()
 	{
 		if (Self::$verbose == TRUE)
-			echo $this->__toString() . " destructed.\n";
+			echo $this->__toString() . " destructed\n";
 	}
-	public function __toString()
+	function __toString()
 	{
-		return (sprintf("Color( red: %3d, green: %3d, blue: %3d )", $this->red, $this->green, $this->blue));
-	}
-	public function add($set)
-	{
-		return (new Color(
-			array(
-				'red' => $this->red + $set->red,
-				'green' => $this->green + $set->green,
-				'blue' => $this->blue + $set->blue
-			)
-		));
-	}
-	public function sub($set)
-	{
-		return (new Color(
-			array(
-				'red' => $this->red - $set->red,
-				'green' => $this->green - $set->green,
-				'blue' => $this->blue - $set->blue
-			)
-		));
-	}
-	public function mult($x)
-	{
-		return (new Color(
-			array(
-				'red' => $this->red * $x,
-				'green' => $this->green * $x,
-				'blue' => $this->blue * $x
-			)
-		));
+		if (Self::$verbose == TRUE) {
+			return (sprintf(
+				"Vertex( x: %0.2f, y: %0.2f, z:%0.2f, w:%0.2f, Color( red: %3d, green: %3d, blue: %3d ) )",
+				$this->_x,
+				$this->_y,
+				$this->_z,
+				$this->_w,
+				$this->_color->red,
+				$this->_color->green,
+				$this->_color->blue
+			));
+		} else {
+			return (sprintf(
+				"Vertex( x: %0.2f, y: %0.2f, z:%0.2f, w:%0.2f )",
+				$this->_x,
+				$this->_y,
+				$this->_z,
+				$this->_w
+			));
+		}
 	}
 	public static function doc()
 	{
-		echo file_get_contents("Color.doc.txt");
+		echo file_get_contents("Vertex.doc.txt");
+	}
+	public function getX()
+	{
+		return $this->_x;
+	}
+	public function getY()
+	{
+		return $this->_y;
+	}
+	public function getZ()
+	{
+		return $this->_z;
+	}
+	public function getW()
+	{
+		return $this->_w;
+	}
+	public function getColor()
+	{
+		return $this->_color;
+	}
+	public function setX($value)
+	{
+		$this->_x = $value;
+	}
+	public function setY($value)
+	{
+		$this->_y = $value;
+	}
+	public function setZ($value)
+	{
+		$this->_z = $value;
+	}
+	public function setW($value)
+	{
+		$this->_w = $value;
+	}
+	public function setColor($color)
+	{
+		$this->_color = $color;
 	}
 }

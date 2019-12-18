@@ -15,7 +15,7 @@ $Vertex_example = new Vertex(array( 'x' => 1.0, 'y' => 0.0, 'z' => 0.0, 'color' 
 
 'w' and 'color' are optional - by default 'w' will be set to 1.0 and color to white.
 
-To access the data, you can:
-- Use getX(), getY(), getZ(), getW(), depends on the element you want to retrieve (this takes no argument)
-- Access it using setX(), setY(), setZ(), setW() according to the element you want to retrieve
+The class provides the following methods :
+- Use getX(), getY(), getZ(), getW(), getColor() to retrieve the element (functions with no argument)
+- Use setX($value), setY($value), setZ($value), setW($value), setColor($color_instance) to set the element to a value or color instance
 ---------------------------------------------------------------------- Vertex ->
