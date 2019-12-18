@@ -5,39 +5,65 @@ class Color
 	public $red;
 	public $green;
 	public $blue;
-	public static $verbose = FALSE;
+	static $verbose = FALSE;
 
-	public function __construct(array $kwargs)
+	public function __construct($color)
 	{
-		if (array_key_exists('arg', $kwargs)) {
-			$intrgb = intval($kwargs['rgb']);
+		if (array_key_exists('rgb', $color)) {
+			$intrgb = intval($color['rgb']);
 			$this->red = ($intrgb >> 16) & 0xff;
 			$this->green = ($intrgb >> 8) & 0xff;
-			$this->blue = ($intrgb >> 0) & 0xff;
-		}
-		elseif (
-			array_key_exists('red', $kwargs) &&
-			array_key_exists('green', $kwargs) &&
-			array_key_exists('blue', $kwargs)
+			$this->blue = $intrgb & 0xff;
+		} else if (
+			array_key_exists('red', $color) &&
+			array_key_exists('green', $color) &&
+			array_key_exists('blue', $color)
 		) {
-			$this->red = intval($kwargs['red']);
-			$this->green = intval($kwargs['green']);
-			$this->blue = intval($kwargs['blue']);
+			$this->red = intval($color['red']);
+			$this->green = intval($color['green']);
+			$this->blue = intval($color['blue']);
 		}
-		if(self::$verbose==TRUE)
-		{
-			printf("");
-		}
-		return;
+		if (Self::$verbose == TRUE)
+			echo $this->__toString() . " constructed.\n";
 	}
 	public function __destruct()
 	{
-		print('__destruct called' . PHP_EOL);
-		return;
+		if (Self::$verbose == TRUE)
+			echo $this->__toString() . " destructed.\n";
 	}
-	public function __to_string()
+	public function __toString()
 	{
-		print('__to_string called' . PHP_EOL);
+		return (sprintf("Color( red: %3d, green: %3d, blue: %3d )", $this->red, $this->green, $this->blue));
+	}
+	public function add($set)
+	{
+		return (new Color(
+			array(
+				'red' => $this->red + $set->red,
+				'green' => $this->green + $set->green,
+				'blue' => $this->blue + $set->blue
+			)
+		));
+	}
+	public function sub($set)
+	{
+		return (new Color(
+			array(
+				'red' => $this->red - $set->red,
+				'green' => $this->green - $set->green,
+				'blue' => $this->blue - $set->blue
+			)
+		));
+	}
+	public function mult($x)
+	{
+		return (new Color(
+			array(
+				'red' => $this->red * $x,
+				'green' => $this->green * $x,
+				'blue' => $this->blue * $x
+			)
+		));
 	}
 	public static function doc()
 	{
