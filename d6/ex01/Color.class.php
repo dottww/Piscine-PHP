@@ -5,36 +5,24 @@ class Color
 	public $red;
 	public $green;
 	public $blue;
-	static $verbose = FALSE;
+	public static $verbose = FALSE;
 
 	public function __construct($color)
 	{
-		if (array_key_exists('rgb', $color)) {
+		if (isset($color['rgb'])) {
 			$intrgb = intval($color['rgb']);
 			$this->red = ($intrgb >> 16) & 0xff;
 			$this->green = ($intrgb >> 8) & 0xff;
 			$this->blue = $intrgb & 0xff;
 		} else if (
-			array_key_exists('red', $color) &&
-			array_key_exists('green', $color) &&
-			array_key_exists('blue', $color)
+			isset($color['red']) &&
+			isset($color['green']) &&
+			isset($color['blue'])
 		) {
 			$this->red = intval($color['red']);
 			$this->green = intval($color['green']);
 			$this->blue = intval($color['blue']);
 		}
-		if ($this->red < 0)
-            $this->red = 0;
-        if ($this->green < 0)
-            $this->green = 0;
-        if ($this->blue < 0)
-            $this->blue = 0;
-        if ($this->red > 255)
-            $this->red = 255;
-        if ($this->green > 255)
-            $this->green = 255;
-        if ($this->blue > 255)
-            $this->blue = 255;
 		if (Self::$verbose == TRUE)
 			echo $this->__toString() . " constructed.\n";
 	}
