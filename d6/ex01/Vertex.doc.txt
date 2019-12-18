@@ -7,11 +7,15 @@ A vertex is composed of 5 characteristics:
 - X-axis coordinate, represented by 'x', mandatory
 - Y-axis coordinate, represented by 'y', mandatory
 - Z-axis(depth) coordinate, represented by 'z', mandatory
-- Homogeneous coordinate, represented by 'w', optional, often equal to 1.0
-- Color, optional, represented by an instance of the Color Class
+- Homogeneous coordinate, represented by 'w', optional
+- Color, represented by an instance of the Color Class, optional
+Any other use is undefined behaviour.
 
 An instance of Vertex can be constructed from an array of these 5 elements as per the following example:
-$Vertex_example = new Vertex(array( 'x' => 1.0, 'y' => 0.0, 'z' => 0.0, 'color' => $green) );
+$Vertex_example1 = new Vertex( array( 'x' => 0.0, 'y' => 0.0, 'z' => 0.0 ) );
+
+$green = new Color( array( 'rgb' => 255 << 8 ) );
+$Vertex_example2 = new Vertex( array( 'x' => 1.0, 'y' => 0.0, 'z' => 0.0, 'color' => $green) );
 
 'w' and 'color' are optional - by default 'w' will be set to 1.0 and color to white.
 
