@@ -23,6 +23,18 @@ class Color
 			$this->green = intval($color['green']);
 			$this->blue = intval($color['blue']);
 		}
+		if ($this->red < 0)
+            $this->red = 0;
+        if ($this->green < 0)
+            $this->green = 0;
+        if ($this->blue < 0)
+            $this->blue = 0;
+        if ($this->red > 255)
+            $this->red = 255;
+        if ($this->green > 255)
+            $this->green = 255;
+        if ($this->blue > 255)
+            $this->blue = 255;
 		if (Self::$verbose == TRUE)
 			echo $this->__toString() . " constructed.\n";
 	}

@@ -1,40 +1,26 @@
 <?php
 
-class Color
+class Vertex
 {
-	public $red;
-	public $green;
-	public $blue;
+	public $x;
+	public $y;
+	public $z;
+	public $w = 1;
+	public $color = array('red' => 255,'green' => 255,'blue' => 255);
 	static $verbose = FALSE;
 
-	public function __construct($color)
+	public function __construct($vtx)
 	{
-		if (array_key_exists('rgb', $color)) {
-			$intrgb = intval($color['rgb']);
-			$this->red = ($intrgb >> 16) & 0xff;
-			$this->green = ($intrgb >> 8) & 0xff;
-			$this->blue = $intrgb & 0xff;
-		} else if (
-			array_key_exists('red', $color) &&
-			array_key_exists('green', $color) &&
-			array_key_exists('blue', $color)
-		) {
-			$this->red = intval($color['red']);
-			$this->green = intval($color['green']);
-			$this->blue = intval($color['blue']);
+		if (array_key_exists('x', $vtx) &&array_key_exists('y', $vtx) &&array_key_exists('z', $vtx))
+		{
+			$this->x = intval($vtx['x']);
+			$this->y = intval($vtx['y']);
+			$this->z = intval($vtx['z']);
+			if(array_key_exists('w', $vtx))
+				$this->w = intval($vtx['w']);
+			if(array_key_exists('color', $vtx))
+				$this->color = new Color($vtx['color']);
 		}
-		if ($this->red < 0)
-            $this->red = 0;
-        if ($this->green < 0)
-            $this->green = 0;
-        if ($this->blue < 0)
-            $this->blue = 0;
-        if ($this->red > 255)
-            $this->red = 255;
-        if ($this->green > 255)
-            $this->green = 255;
-        if ($this->blue > 255)
-            $this->blue = 255;
 		if (Self::$verbose == TRUE)
 			echo $this->__toString() . " constructed.\n";
 	}

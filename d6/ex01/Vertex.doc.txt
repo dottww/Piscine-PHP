@@ -1,4 +1,21 @@
 
 <- Vertex ----------------------------------------------------------------------
-Your documentation here.
+The Vertex class handles the representation of a point in space : the "vertex".
+This is actually called a vertex.
+
+A vertex is composed of 5 characteristics:
+- X-axis coordinate, represented by 'x', mandatory
+- Y-axis coordinate, represented by 'y', mandatory
+- Z-axis(depth) coordinate, represented by 'z', mandatory
+- Homogeneous coordinate, represented by 'w', optional, often equal to 1.0
+- Color, optional, represented by an instance of the Color Class
+
+An instance of Vertex can be constructed from an array of these 5 elements as per the following example:
+$Vertex_example = new Vertex(array( 'x' => 1.0, 'y' => 0.0, 'z' => 0.0, 'color' => $green) );
+
+'w' and 'color' are optional - by default 'w' will be set to 1.0 and color to white.
+
+To access the data, you can:
+- Use getX(), getY(), getZ(), getW(), depends on the element you want to retrieve (this takes no argument)
+- Access it using setX(), setY(), setZ(), setW() according to the element you want to retrieve
 ---------------------------------------------------------------------- Vertex ->
