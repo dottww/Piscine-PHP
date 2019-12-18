@@ -26,7 +26,7 @@ class Color
 		}
 		if(self::$verbose==TRUE)
 		{
-			
+			printf("");
 		}
 		return;
 	}
