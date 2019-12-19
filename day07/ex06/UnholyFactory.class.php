@@ -1,9 +1,8 @@
 <?php
-
-
+include_once('Fighter.class.php');
 class UnholyFactory
 {
-	static public $arr = array();
+	public $arr = array();
 
 	public function absorb($fighter_instance)
 	{
@@ -28,5 +27,6 @@ class UnholyFactory
 			}
 		}
 		echo "(Factory hasn't absorbed any fighter of type " . $rf . ")" . PHP_EOL;
+		return NULL;
 	}
 }
