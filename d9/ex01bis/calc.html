@@ -5,17 +5,18 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>calc</title>
+	<title>Calc_JQ</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 
 
 <body>
-	<form id="calc">
+	<form id="calcform">
 		Value1:<br>
-		<input type="text" name="Value1" value="">
+		<input type="text" id="v1" value="">
 		<br>
 		action:<br>
-		<select name="action">
+		<select id="op" name="op">
 			<option value="+">+</option>
 			<option value="-">-</option>
 			<option value="*">*</option>
@@ -24,22 +25,34 @@
 		</select>
 		<br>
 		Value2:<br>
-		<input type="text" name="Value2" value="">
+		<input type="text" id="v2" value="">
 		<br><br>
 	</form>
-	<button onclick="ft_calc()">Try me!</button>
+	<button id="trybtn">Try me!</button>
 	<script>
-		setInterval(function () {
-			alert("Please, use me...");
-		}, 30000);
-		function ft_calc() {
-			var Value1 = document.getElementById("calc").elements.item(0).value;
-			var action = document.getElementById("calc").elements.item(1).value;
-			var Value2 = document.getElementById("calc").elements.item(2).value;
-			var result;
+		var Value1;
+		var Value2;
+		var action;
+		var result;
 
-			if (isNaN(Value1) || isNaN(Value2) || Number(Value1) < 0 || Number(Value2) < 0 || action === "" || Number.isInteger(Number(Value1)) === false || Number.isInteger(Number(Value2)) === false)
+		$(document).ready(function () {
+			setInterval("alert('Please, use me...');", 30000);
+		});
+
+		$('#trybtn').click(function (event) {
+			Value1 = $('#v1').val();
+			Value2 = $('#v2').val();
+			action = $('#op').val();
+			if (event)
+				event.preventDefault();
+
+			// console.log(Value1);
+			// console.log(action);
+			// console.log(Value2);
+
+			if ($.isNumeric(Value1) === false || $.isNumeric(Value2) === false || (Value1 % 1) !== 0 || (Value2 % 1) !== 0 || Value1 < 0 || Value2 < 0 || Value1 === "" || Value2 === "" || !Value1.trim() || !Value2.trim())
 				alert("Error :(");
+
 			else {
 				switch (action) {
 					case "+":
@@ -67,7 +80,7 @@
 				alert(result);
 				console.log(result);
 			}
-		};
+		});
 	</script>
 </body>
 
