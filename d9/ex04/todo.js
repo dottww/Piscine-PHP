@@ -1,17 +1,29 @@
 
 
 $(document).ready(function () {
-
     ft_list_div = $("#ft_list");
-
-    $.ajax(`select.php`, {
-        type: "GET",
-        success: function (res) {
-            for (var id in res)
-                add_todo(id, res[id]);
-        }
+    
+    load();
+    
+    $("#btn").mouseout(function () {
+        $(ft_list_div).empty();
+        load();
     })
+    // setInterval(function (){
+    //     $(ft_list_div).empty();
+    //     load();
+    // }, 100000);
 
+    function load(){
+        $.ajax(`select.php`, {
+            type: "GET",
+            success: function (res) {
+                for (var id in res)
+                    add_todo(id, res[id]);
+            }
+        })
+    }
+ 
     function add_todo(id, text) {
         var newtd = document.createElement("div");
         newtd.id = id;

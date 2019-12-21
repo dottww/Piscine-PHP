@@ -17,6 +17,4 @@
         $i++;
     }
     file_put_contents("list.csv", $newcontent);
-    // header("Content-Type: application/json");
-	// echo json_encode($newlines);
 ?>
