@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Balloon</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<style>
 		#globo {
 			height: 200px;
@@ -19,11 +20,17 @@
 <body>
 	<div id="globo"></div>
 	<script>
-		var globo = document.getElementById("globo");
-		var div_size = globo.clientHeight;
+		var div_size = 200;
 		var color = ["red", "green", "blue"];
 		var index = 0;
-		globo.addEventListener("click", function () {
+
+		$(document).ready(function () {
+			$('#globo').click(expand);
+			$('#globo').mouseleave(shrink);
+
+		})
+
+		function expand() {
 			div_size += 10;
 			if (div_size > 420) {
 				div_size = 200;
@@ -31,21 +38,25 @@
 			index++;
 			if (index > 2)
 				index = 0;
-			globo.style["height"] = div_size + "px";
-			globo.style["width"] = div_size + "px";
-			globo.style["background-color"] = color[index];
-		});
-		globo.addEventListener("mouseleave", function () {
+			change();
+		};
+
+		function shrink() {
 			if (div_size >= 205) {
 				div_size -= 5;
 			}
 			index--;
 			if (index < 0)
 				index = 2;
-			globo.style["height"] = div_size + "px";
-			globo.style["width"] = div_size + "px";
-			globo.style["background-color"] = color[index];
-		});
+			change();
+		};
+
+		function change() {
+			$('#globo').css("height", div_size);
+			$('#globo').css("width", div_size);
+			$('#globo').css("background-color", color[index]);
+		};
+
 	</script>
 </body>
 

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>calc</title>
+</head>
+
+
+<body>
+	<form id="calc">
+		Value1:<br>
+		<input type="text" name="Value1" value="">
+		<br>
+		action:<br>
+		<select name="action">
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+			<option value="%">%</option>
+		</select>
+		<br>
+		Value2:<br>
+		<input type="text" name="Value2" value="">
+		<br><br>
+	</form>
+	<button onclick="ft_calc()">Try me!</button>
+	<script>
+		setInterval(function () {
+			alert("Please, use me...");
+		}, 30000);
+		function ft_calc() {
+			var Value1 = document.getElementById("calc").elements.item(0).value;
+			var action = document.getElementById("calc").elements.item(1).value;
+			var Value2 = document.getElementById("calc").elements.item(2).value;
+			var result;
+
+			if (isNaN(Value1) || isNaN(Value2) || Number(Value1) < 0 || Number(Value2) < 0 || action === "" || Number.isInteger(Number(Value1)) === false || Number.isInteger(Number(Value2)) === false)
+				alert("Error :(");
+			else {
+				switch (action) {
+					case "+":
+						result = Number(Value1) + Number(Value2);
+						break;
+					case "-":
+						result = Number(Value1) - Number(Value2);
+						break;
+					case "*":
+						result = Number(Value1) * Number(Value2);
+						break;
+					case "/":
+						if (Number(Value2) == 0)
+							result = "It’s over 9000!";
+						else
+							result = Number(Value1) / Number(Value2);
+						break;
+					case "%":
+						if (Number(Value2) == 0)
+							result = "It’s over 9000!";
+						else
+							result = Number(Value1) % Number(Value2);
+						break;
+				}
+				alert(result);
+				console.log(result);
+			}
+		};
+	</script>
+</body>
+
+</html>
